@@ -12,17 +12,17 @@
 - 接口名称变化；
 - 接口返回的数据结构变化。
 
-通过编写测试代码，只要输入 npm run test 即可自动测试接口是否正常。
+通过编写测试代码，只要输入 `npm run test` 即可自动测试接口是否正常。
 
 ## demo
 
-### Step0：安装依赖
+**Step0：安装依赖**
 
 ```
 $ npm install tein --save-dev
 ```
 
-### Step1：编写接口文档。
+**Step1：编写接口文档**
 
 配置文件：tein.config.js/tein.json/.teinrc
 
@@ -31,40 +31,52 @@ $ npm install tein --save-dev
 
 ```
 // tein.config.js
-eport default [
+export default [
   {
     req: {
-      url: 'http://localhost:8000/api/v2/users/:id',
+      url: 'https://novel.dkvirus.top/api/v2/gysw/novel/classify',
       method: 'get',
-      headers: {},
-      data: { id: 1 },
     },
     res: {
-      code: string,
-      message: string,
-      data: {
-        content: [
-          {
-            username: string,
-            avatar: string,
-          }
-        ]
-      }
-    }
-  }
-]
+      code: String,
+      message: String,
+      data: [
+        {
+          id: Number,
+          path: String,
+          desc: String,
+        },
+      ],
+    },
+  },
+];
 ```
 
-### Step2：修改 package.json 的 script 属性。
+**Step2：修改 package.json 的 script 属性**
 
 执行 tein 命令，会自动去根目录下找 tein.config.js/tein.json/.teinrc 配置文件，如果找不到，不做任何操作；
 
-也可以指定配置文件相对路径，如：`tein ./configs/tein.config.js`。
+也可以指定配置文件相对路径，如：`tein ./configs/tein.config.js`。(计划中)
 
 ```
 "scripts": {
     "test:interface": "tein"
 }
 ```
+
+## pics
+
+接口名称变动导致失败
+
+![接口名称变动导致失败](/docs/images/接口名称变动导致失败.png)
+
+接口数据结构变动导致失败
+
+![接口数据结构变动导致失败](/docs/images/接口数据结构变动导致失败.png)
+
+接口测试成功
+
+![接口测试成功](/docs/images/接口测试成功.png)
+
 
 
