@@ -11,4 +11,5 @@ deploy:
   on:
     tags: true
     repo: dkvirus/tein
+  tag: latest
 
