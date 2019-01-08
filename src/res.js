@@ -1,4 +1,11 @@
-const chalk = require('chalk');
+/**
+ * author: dkvirus
+ * date: 2019年01月08日09:46:01
+ * function: 测试接口响应数据结构是否有变化
+ */
+
+const clc = require("cli-color");
+const differ = require('./differ/index');
 
 module.exports = handleObject;
 
@@ -26,23 +33,22 @@ module.exports = handleObject;
  *          }]
  *      }
  */
-function traverse (response) {
+function traverse2Type (response) {
     const obj = {};
     
     for (let attr in response) {
         if (Object.prototype.toString.call(response[attr]) === '[object Object]') {
-            obj[attr] = traverse(response[attr]);
+            obj[attr] = traverse2Type(response[attr]);
             continue;
         }
 
         if (Object.prototype.toString.call(response[attr]) === '[object Array]') {
             obj[attr] = [];
-            obj[attr].push(traverse(response[attr][0]));
+            obj[attr].push(traverse2Type(response[attr][0]));
             continue;
         }
 
         obj[attr] = response[attr].constructor;
-        
     }        
 
     return obj;
@@ -76,18 +82,18 @@ function traverse (response) {
  *          }]
  *      }
  */
-function handleDefault (response) {
+function traverse2Value (response) {
     const obj = {};
     
     for (let attr in response) {
         if (Object.prototype.toString.call(response[attr]) === '[object Object]') {
-            obj[attr] = handleDefault(response[attr]);
+            obj[attr] = traverse2Value(response[attr]);
             continue;
         }
 
         if (Object.prototype.toString.call(response[attr]) === '[object Array]') {
             obj[attr] = [];
-            obj[attr].push(handleDefault(response[attr][0]));
+            obj[attr].push(traverse2Value(response[attr][0]));
             continue;
         }
 
@@ -103,30 +109,26 @@ function handleDefault (response) {
     return obj;
 }
 
-
 /**
  * 拿期待值与实际响应值进行比较
  * 
  * 期待值有而响应值没有 => 后端删除了该字段值
  * 期待值没有而响应值有 => 后端新增了该字段值
  * 期待值与响应值类型不同 => 后端修改了该字段的数据类型
+ * 
+ * response   请求实际响应数据
+ * expect     期待返回数据结构
  */
 function handleObject (response, expect) {
-    let result = traverse(response);
+    let respResult = traverse2Type(response);
     let { req, res } = expect;
     
-    result = handleDefault(result);
-    res = handleDefault(res);
-    
-    if (JSON.stringify(result) !== JSON.stringify(res)) {
-        console.log(chalk.red(`
-【${req.method} ${req.url}】请求数据结构有变化：
+    respResult = traverse2Value(respResult);      // 响应数据结构
+    const expeResult = traverse2Value(res);       // 期待数据结构
 
-    期待数据结构：
-    ${JSON.stringify(res)}
-    实际响应数据结构：
-    ${JSON.stringify(result)}        
-        `));
+    if (JSON.stringify(respResult) !== JSON.stringify(expeResult)) {
+        console.log(clc.red(`>【${req.method} ${req.url}】接口返回数据结构有变化：`))
+        console.log(differ(JSON.stringify(expeResult, null, 4), JSON.stringify(respResult, null, 4)));
         throw new Error('数据结构有变化');
     }
 
