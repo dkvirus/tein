@@ -22,7 +22,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cli-color": "^1.4.0",
-    "universal-diff": "^2.0.2"
+    "universal-diff": "^2.0.2",
+    "update-notifier": "^2.5.0"
   },
   "devDependencies": {
     "qs": "^6.6.0"

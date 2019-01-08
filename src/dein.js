@@ -5,12 +5,17 @@ const path = require('path');
 const fs = require('fs');
 const http = require('http');
 const clc = require("cli-color");
+const updateNotifier = require('update-notifier');
 
 const req = require('./req');   // 测试接口能否发通
 const res = require('./res');   // 测试接口数据结构是否变化 
 const pkg = require('../package.json');
 
 module.exports = start;
+
+// 版本更新通知
+const notifier = updateNotifier({pkg});
+notifier.notify();
 
 /**
  * 入口文件
