@@ -1,6 +1,6 @@
 {
   "name": "tein",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A minimalist interface test library",
   "main": "./src/index.js",
   "bin": {
@@ -9,6 +9,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "bin",
+    "src"
+  ],
   "keywords": [
     "test",
     "interface"

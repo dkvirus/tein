@@ -5,15 +5,15 @@ module.exports = [
         method: 'get',
       },
       res: {
-        code: String,
-        message: String,
+        code: 'x',
+        message: "String",
         data: [
           {
-            id: String,
-            path: String,
-            desc: String,
-          },
-        ],
+            id: 2,
+            path: "String",
+            desc: "String"
+          }
+        ]
       },
     },
     {
@@ -21,14 +21,14 @@ module.exports = [
         url: 'https://novel.dkvirus.top/api/v2/gysw/search/hot',
       },
       res: {
-        code: String,
-        message: String,
-        data: [
+        "code": "String",
+        "message": "String",
+        "data": [
           {
-            keyword: String,
-            times: Number,
-          },
-        ],
+            "keyword": "String",
+            "times": "Number"
+          }
+        ]
       },
     },
 ]

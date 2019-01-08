@@ -74,6 +74,14 @@ oauth2 认证需要先拿到 token，之后每个请求都需要携带 token 请
 
 参考 [code demo](/test/fixture-object-oauth2) 和 [issue #1](https://github.com/dkvirus/tein/issues/1)
 
+## tools
+
+每次手动转换接口类型超级麻烦，tein 提供可视化操作，`$ tein ui` 命令会启动一个 web 服务，进入 `localhost:28000` 进行操作。
+
+![自动转换响应数据结构](/docs/images/transform.gif)
+
+
+
 
 
 

@@ -3,6 +3,7 @@
  */
 const path = require('path');
 const fs = require('fs');
+const http = require('http');
 const clc = require("cli-color");
 
 const req = require('./req');   // 测试接口能否发通
@@ -15,6 +16,11 @@ module.exports = start;
  * 入口文件
  */
 async function start (file) {
+    if (process.argv.length === 3 && process.argv[2] === 'ui') {
+        handleUiCmd();
+        return;
+    }
+    
     const filePath = file || getConfigFilePath();
     if (!filePath) {
         // 没有找到，打印版本号
@@ -34,6 +40,28 @@ async function start (file) {
     }
 
     handleBatch(apis);
+}
+
+/**
+ * 处理 tein ui 命令
+ */
+function handleUiCmd () {
+    const server = http.createServer(function (req, res) {
+        if (req.url === '/favicon.ico') {
+            return;
+        }
+
+        if (req.url === '/') {
+            fs.readFile(path.resolve(__dirname, 'ui/index.html'), function (err, data) {
+                res.writeHead(200, {'Content-type': 'text/html;charset=UTF-8'});
+                res.end(data);
+            });
+        }
+    });
+    
+    server.listen(28000, function () {
+        console.log(clc.green('打开浏览器，输入：http://localhost:28000'));
+    });
 }
 
 /**

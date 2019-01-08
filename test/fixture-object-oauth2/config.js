@@ -7,11 +7,11 @@ module.exports = async function () {
     method: "post",
     data: qs.stringify({
       grant_type: "password",
-      username: "admin",
+      username: "dk",
       password: "admin"
     }),
     headers: {
-      Authorization: "Basic c3dhZ2dlcjpzd2FnZ2Vy",
+      Authorization: "Basic c3dhZ2dlcxpzd2FnZ2Vy",
       "Content-Type": "application/x-www-form-urlencoded"
     }
   });
@@ -27,7 +27,7 @@ module.exports = async function () {
     apis: [
       {
         req: {
-          url: "/rbac/privs"
+          url: "/user"
         },
         res: {
           code: String,
@@ -38,24 +38,7 @@ module.exports = async function () {
                 name: String,
                 desc: String
               }
-            ],
-            totalPages: Number,
-            last: Boolean,
-            totalElements: Number,
-            size: Number,
-            number: Number,
-            sort: [
-              {
-                direction: String,
-                property: String,
-                ignoreCase: Boolean,
-                nullHandling: String,
-                descending: Boolean,
-                ascending: Boolean
-              }
-            ],
-            first: Boolean,
-            numberOfElements: Number
+            ]
           }
         }
       }
