@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '8'
+- '10'
+install: true
+deploy:
+  provider: npm
+  email: 949582269@qq.com
+  api_key:
+    secure: l9CX8+CB8yDcpu7JguOCe/nsbG2WCx1DYwfWXKkzs6Rx2IBOzKT+M/rSt1bPjWSUG1oLBn1Sc9mOczRRQVCSpQS52mU2Xd/tRqQ1mb+Pk361xjOczfHp5u8ULvvHTkozXnEEoLx2/xcdrQCdVWhewI8BIpkcpaS9Cd1jkUiifpvRQwHQxYBd3r1+wF9i378hGHnay+w7dDgYTFyZnaLxhmhPWa+h3cte8utwX3cR8ZCtztcA/26BuAXzrbcTQ4UZrPAAmA0W3D3slCDjocORrG2/MBJssDjs73E2TXqu6tmoTecws7/D6FYjowlSQWiYvhEurCekip53XjrD39ac+x3iGSV/KCS5KfETAO/eErdUGg2QgP3kEKkoLbn3fSg9qXKTtfiocCs77+/pVHgJ1h41c1cUwlIjy0UKK7XkDYv+Ae5oHeH2BIpC8UNdYWIgyopNt1EvRGxewv4tu6i3XSfW6eUMzACC4fD11wEYNUM57H3E9j2u/XKA74UiSEFrf+A5NMaHNGubd3t6aQx2OD8hMLjDGl9j2TR0QRdB2QLdeRU4sgr5WQuotwfFiZjlFzgEajPJ2HjrCmJtg4gTT+foGQp0QiTRgiG5wim7W9jmcdoUR7Q7Jn26jnIqTdre5kggqcgmoMeOAd5zUPlxwJYFkdZ7yl4gCz6gGDdyMOA=
+  on:
+    tags: true
+    repo: dkvirus/tein
+

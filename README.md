@@ -22,7 +22,7 @@ $ npm install tein --save-dev
 
 **Step1：编写接口文档**
 
-配置文件：tein.config.js/tein.json/.teinrc
+配置文件：tein.config.js
 
 - req 为请求相关参数，用来测试接口是否正确，能访问到；
 - res 为响应数据的类型，用来测试返回数据结构是否有变化，新增或删除字段，数据类型是否变化等。
