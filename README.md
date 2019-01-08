@@ -56,7 +56,7 @@ export default [
 
 执行 tein 命令，会自动去根目录下找 tein.config.js/tein.json/.teinrc 配置文件，如果找不到，不做任何操作；
 
-也可以指定配置文件相对路径，如：`tein ./configs/tein.config.js`。(计划中)
+也可以指定配置文件相对路径，如：`tein ./configs/tein.config.js`。
 
 ```
 "scripts": {
@@ -66,17 +66,14 @@ export default [
 
 ## pics
 
-接口名称变动导致失败
+![接口数据结构变动](/docs/images/dein.gif)
 
-![接口名称变动导致失败](/docs/images/接口名称变动导致失败.png)
+## Q & A
 
-接口数据结构变动导致失败
+oauth2 认证需要先拿到 token，之后每个请求都需要携带 token 请求，怎么测试接口？
 
-![接口数据结构变动导致失败](/docs/images/接口数据结构变动导致失败.png)
+参考 [code demo](/test/fixture-object-oauth2) 和 [issue #1](https://github.com/dkvirus/tein/issues/1)
 
-接口测试成功
-
-![接口测试成功](/docs/images/接口测试成功.png)
 
 
 
