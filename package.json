@@ -2,7 +2,7 @@
   "name": "tein",
   "version": "0.0.1",
   "description": "A minimalist interface test library",
-  "main": "index.js",
+  "main": "./src/index.js",
   "bin": {
     "tein": "./bin/index.js"
   },
@@ -17,6 +17,10 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "chalk": "^2.4.2"
+    "cli-color": "^1.4.0",
+    "universal-diff": "^2.0.2"
+  },
+  "devDependencies": {
+    "qs": "^6.6.0"
   }
 }
