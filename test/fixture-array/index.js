@@ -3,6 +3,6 @@
  */
 
 const path = require('path');
-const { dein } = require('../../src/index');
+const { tein } = require('../../src/index');
 
-dein(path.join(__dirname, 'tein.config.js'));
+tein(path.join(__dirname, 'tein.config.js'));

@@ -24,6 +24,9 @@ async function start (file) {
     if (process.argv.length === 3 && process.argv[2] === 'ui') {
         handleUiCmd();
         return;
+    } else if (process.argv.length === 3 && process.argv[2] === 'v' || process.argv[2] === '-v') {
+        console.log(clc.white(`${pkg.version}`));
+        return;
     }
     
     const filePath = file || getConfigFilePath();

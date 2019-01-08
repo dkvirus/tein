@@ -6,9 +6,9 @@
  *   headers    oauth2 认证需要统一携带 headers 头
  */
 const path = require('path');
-const { dein } = require('../../src/index');
+const { tein } = require('../../src/index');
 // const start = require('./config');
 
-dein(path.join(__dirname, 'config.js'));
+tein(path.join(__dirname, 'config.js'));
 
 // console.log(start().then(function (result) { console.log(result) }))

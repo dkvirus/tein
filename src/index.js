@@ -2,6 +2,6 @@
  * main 入口文件
  */
 const axios = require('axios');
-const dein = require('./dein');
+const tein = require('./tein');
 
-module.exports = { axios, dein };
+module.exports = { axios, tein };

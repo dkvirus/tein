@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-const dein = require('../src/dein');
-dein();
+const tein = require('../src/tein');
+tein();
