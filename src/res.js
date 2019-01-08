@@ -48,7 +48,16 @@ function traverse2Type(response) {
       continue;
     }
 
-    obj[attr] = response[attr].constructor;
+    /**
+     * fix bug => issue #5
+     * 当字段值为 null 或 undefined 时如何处理？这里当做字符串处理。
+     */
+    if (response[attr] === null || response[attr] === undefined) {
+      obj[attr] = 'String';
+    } else {
+      obj[attr] = response[attr].constructor;
+    }
+    
   }
 
   return obj;
@@ -100,7 +109,8 @@ function traverse2Value(response) {
     if (
       response[attr] === String ||
       (typeof response[attr] === "string" &&
-        ["Number", "Boolean"].indexOf(response[attr]))
+        response[attr] !== "Number" &&
+        response[attr] !== "Boolean")
     ) {
       obj[attr] = "";
     } else if (
