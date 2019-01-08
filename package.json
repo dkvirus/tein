@@ -1,6 +1,6 @@
 {
   "name": "tein",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "A minimalist interface test library",
   "main": "./src/index.js",
   "bin": {
